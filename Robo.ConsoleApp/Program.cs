@@ -64,7 +64,7 @@ namespace Robo.ConsoleApp
                     #endregion
 
                     #region Movimentando o Robo
-                    Console.WriteLine("Digite os movimentos que o robo 1 deve realizar");
+                    SolicitaMovimentoRobos();
 
                     string strMovimentosRobo = Console.ReadLine().ToUpper();
 
@@ -108,6 +108,11 @@ namespace Robo.ConsoleApp
             void SolicitaPosicacaoRobo()
             {
                 Console.WriteLine($"Digite a localização inicial do robo {contadorRobos}");
+            }
+
+            void SolicitaMovimentoRobos()
+            {
+                Console.WriteLine($"Digite os movimentos que o robo {contadorRobos} deve realizar");
             }
 
             #endregion
