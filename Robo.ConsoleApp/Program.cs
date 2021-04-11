@@ -24,9 +24,9 @@ namespace Robo.ConsoleApp
                 membrosSeparados[i] = Convert.ToInt32(numeros[i]);
             }
 
-            int comprimentoNave = membrosSeparados[0]; // Posição 0 do array é o comprimento da nave.
+            int larguraNave = membrosSeparados[0]; // Posição 0 do array é  o comprimento da nave.
 
-            int larguraNave = membrosSeparados[1];// Posição 1 do array é a largura da nave.
+            int comprimentoNave = membrosSeparados[1];// Posição 1 do array é a largura da nave.
 
             #endregion
 
@@ -41,11 +41,11 @@ namespace Robo.ConsoleApp
 
             int[] pontoInicialRoboSeparado = new int[3];
 
-            for(int i = 0; i < pontoInicial.Length; i++)
+            for (int i = 0; i < pontoInicial.Length; i++)
             {
                 bool ehNumero = Int32.TryParse(pontoInicial[i], out pontoInicialRoboSeparado[i]);
 
-                if(ehNumero != true)
+                if (ehNumero != true)
                 {
                     switch (pontoInicial[i]) //Atribuindo a letra (N, S, L , O) inserida pelo usuario a uma variavel
                     {
@@ -60,12 +60,12 @@ namespace Robo.ConsoleApp
                 else
                 {
                     pontoInicialRoboSeparado[i] = Convert.ToInt32(pontoInicial[i]); //Atribuindo o primeiro e segundo numero na array pontoInicialRoboSeparado
-                }                                
+                }
             }
 
-            int posicaoRoboComprimento = pontoInicialRoboSeparado[0];// Posição 0 do array é o a posição do robo no comprimento da nave.
+            int posicaoRoboComprimento = pontoInicialRoboSeparado[1];// Posição 0 do array é o a posição do robo no comprimento da nave.
 
-            int posicaoRoboLargura = pontoInicialRoboSeparado[1]; // Posição 1 do array é o a posição do robo na largura da nave.
+            int posicaoRoboLargura = pontoInicialRoboSeparado[0]; // Posição 1 do array é o a posição do robo na largura da nave.
 
             #endregion
 
@@ -78,10 +78,46 @@ namespace Robo.ConsoleApp
 
             for (int i = 0; i < movimentosRobo.Length; i++)
             {
-                 //Armazena o lado para onde o robo estará olhando
-                int percursoRoboComprimento = 0;
-                int percursoRoboLargura = 0;
+
+                if (movimentosRobo[i] == 'E')
+                {
+                    switch (auxVisaoRobo)
+                    {
+                        case 'N': auxVisaoRobo = 'O'; break;
+                        case 'S': auxVisaoRobo = 'L'; break;
+                        case 'L': auxVisaoRobo = 'N'; break;
+                        case 'O': auxVisaoRobo = 'S'; break;
+                        default:
+                            break;
+                    }
+                }
+                else if (movimentosRobo[i] == 'D')
+                {
+                    switch (auxVisaoRobo)
+                    {
+                        case 'N': auxVisaoRobo = 'L'; break;
+                        case 'S': auxVisaoRobo = 'O'; break;
+                        case 'L': auxVisaoRobo = 'S'; break;
+                        case 'O': auxVisaoRobo = 'N'; break;
+                        default:
+                            break;
+                    }
+                }
+                else
+                {
+                    switch (auxVisaoRobo)
+                    {
+                        case 'N': posicaoRoboComprimento++; break;
+                        case 'S': posicaoRoboComprimento--; break;
+                        case 'L': posicaoRoboLargura++; break;
+                        case 'O': posicaoRoboLargura--; break;
+                        default:
+                            break;
+                    }
+                }
             }
+            Console.WriteLine($"{posicaoRoboLargura} {posicaoRoboComprimento} {auxVisaoRobo}");
+            Console.ReadLine();
             #endregion
         }
     }
