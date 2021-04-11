@@ -87,7 +87,9 @@ namespace Robo.ConsoleApp
                         }
                     }
                     contadorRobos++;
-                    //Console.WriteLine($"{posicaoX[contadorRobos]} {posicaoY[contadorRobos]} {auxVisaoRobo[contadorRobos]}"); ------ Mostrar um de cada vez
+
+                    // ------ Mostrar um de cada vez
+                    //MostraPosicaoFinal(auxVisaoRobo, posicaoX, posicaoY, c); 
 
                 }
                 for (int i = 0; i < 2; i++)
